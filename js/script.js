@@ -30,7 +30,7 @@ function titleClickHandler(event){
   const targetArticle = document.querySelector(articleSelector);
   console.log(targetArticle);
 
-  /* add class 'active' to the correct article */
+
 }
 
 const links = document.querySelectorAll('.titles a');
