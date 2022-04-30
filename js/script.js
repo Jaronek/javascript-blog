@@ -78,7 +78,7 @@ function generateTitleLinks(){
     /* insert link into titleList */
 
     html = html + linkHTML;
-    
+    console.log(html);
     titleList.innerHTML = html;
     }
   
