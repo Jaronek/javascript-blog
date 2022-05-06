@@ -99,51 +99,68 @@ function generateTags(){
     for(let article of articles) {
 
     /*[DONE] find tags wrapper */
+
       const tagsWrapper = article.querySelector(optArticleTagsSelector);
 
     /*[DONE]make html variable with empty string */
+
       let html = '';
+
     /*[DONE] get tags from data-tags attribute */
       const articleTags = article.getAttribute('data-tags');
 
     /* [DONE]split tags into array */
       const articleTagsArray = articleTags.split(' ');
-
+      console.log(articleTagsArray);
     /* [DONE]START LOOP: for each tag */
+
       for (let tag of articleTagsArray){
 
       /* [DONE]generate HTML of the link */
+
         const tagsHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li> ';
 
       /*[DONE] add generated code to html variable */
-        html = html + tagsHTML;
 
+        html = html + tagsHTML;
     /*[DONE] END LOOP: for each tag */
       }
     /* [DONE]insert HTML of all the links into the tags wrapper */
+
       tagsWrapper.innerHTML = html;
+
   /*[DONE] END LOOP: for every article: */
-    }
+
+  }
+
 }
 
 generateTags();
 
 function tagClickHandler(event){
+
   /* prevent default action for this event */
+
   event.preventDefault();
-  console.log('klikniete');
   console.log(event);
 
   /* make new constant named "clickedElement" and give it the value of "this" */
+
   const clickedElement = this;
   console.log('klikniete zostało ', clickedElement);
+
   /* make a new constant "href" and read the attribute "href" of the clicked element */
+
   const href = clickedElement.getAttribute('href');
   console.log(href);
+
   /* make a new constant "tag" and extract tag from the "href" constant */
+
   const tag = href.replace('#tag-', '');
   console.log(tag);
+
   /* find all tag links with class active */
+
 
   /* START LOOP: for each active tag link */
 
@@ -164,9 +181,10 @@ function tagClickHandler(event){
 
 function addClickListenersToTags(){
   /* find all links to tags */
-  const tagLinks = document.querySelectorAll(optArticleTagsSelector);
+  const tagLinks = document.querySelectorAll('.list a');
   /* START LOOP: for each link */
   for(let tagLink of tagLinks){
+
     /* add tagClickHandler as event listener for that link */
     tagLink.addEventListener('click', tagClickHandler);
   /* END LOOP: for each link */
