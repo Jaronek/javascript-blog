@@ -24,18 +24,18 @@ function titleClickHandler(event){
   for(let activeArticle of activeArticles){
     activeArticle.classList.remove('active');
   }
-  /* get 'href' attribute from the clicked link */
+  /* [DONE}get 'href' attribute from the clicked link */
 
   const articleSelector = clickedElement.getAttribute('href');
 
   console.log(articleSelector);
 
-  /* find the correct article using the selector (value of 'href' attribute) */
+  /* [DONE]find the correct article using the selector (value of 'href' attribute) */
 
   const targetArticle = document.querySelector(articleSelector);
   console.log(targetArticle);
 
-  /* add class 'active' to the correct article */
+  /* [DONE]add class 'active' to the correct article */
 
   targetArticle.classList.add('active');
 
@@ -46,37 +46,37 @@ const optArticleSelector = '.post',
   optTitleListSelector = '.titles';
 
 function generateTitleLinks(){
-  /* remove contents of titleList */
+  /* [DONE]remove contents of titleList */
 
   const titleList = document.querySelector(optTitleListSelector).innerHTML = '';
   console.log(titleList);
 
-  /* for each article */
+  /* [DONE]for each article */
   const articles = document.querySelectorAll(optArticleSelector);
   console.log(articles);
 
   let html = '';
 
   for(let article of articles) {
-    /* get the article id */
+    /* [DONE]get the article id */
 
     const articleId = article.getAttribute('id');
 
-    /* find the title element */
+    /* [DONE]find the title element */
 
     const articleTitle = article.querySelector(optTitleSelector).innerHTML;
     console.log(articleTitle);
 
-    /* get the title from the title element */
+    /* [DONE]get the title from the title element */
 
     const titleList = document.querySelector(optTitleListSelector);
     console.log(titleList);
-    /* create HTML of the link */
+    /* [DONE]create HTML of the link */
 
     const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
     console.log(linkHTML);
 
-    /* insert link into titleList */
+    /* [DONE]insert link into titleList */
 
     html = html + linkHTML;
     console.log(html);
@@ -92,3 +92,31 @@ function generateTitleLinks(){
 }
 
 generateTitleLinks();
+
+function generateTags(){
+  /* find all articles */
+
+  /* START LOOP: for every article: */
+
+    /* find tags wrapper */
+
+    /* make html variable with empty string */
+
+    /* get tags from data-tags attribute */
+
+    /* split tags into array */
+
+    /* START LOOP: for each tag */
+
+      /* generate HTML of the link */
+
+      /* add generated code to html variable */
+
+    /* END LOOP: for each tag */
+
+    /* insert HTML of all the links into the tags wrapper */
+
+  /* END LOOP: for every article: */
+}
+
+generateTags();
