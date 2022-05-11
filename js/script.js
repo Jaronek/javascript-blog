@@ -1,5 +1,11 @@
 'use strict';
 
+const templates = {
+  articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML),
+  articleTags: Handlebars.compile(document.querySelector('#template-article-tag').innerHTML),
+  articleAuthor: Handlebars.compile(document.querySelector('#template-article-author').innerHTML)
+}
+
 const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles',
@@ -75,7 +81,8 @@ function generateTitleLinks(customSelector = ''){
 
     /* [DONE]create HTML of the link */
 
-    const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+    const linkHTMLData = {id: articleId, title: articleTitle};
+    const linkHTML = templates.articleLink(linkHTMLData);
 
 
     /* [DONE]insert link into titleList */
@@ -161,7 +168,10 @@ function generateTags(){
       for (let tag of articleTagsArray){
       /* [DONE]generate HTML of the link */
 
-        const linkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
+        const linkHTMLData = {id: tag, title: tag};
+        const linkHTML = templates.articleTags(linkHTMLData);
+
+
       /*[DONE] add generated code to html variable */
 
         html = html + linkHTML;
@@ -315,7 +325,8 @@ function generateAuthors(){
 
     /*generate html link for author*/
 
-    const authorHTML = '<a href="#author-' + articleAuthor + '">' + articleAuthor +'</a>';
+    const authorHTMLData = {id: articleAuthor, title: articleAuthor,};
+    const authorHTML = templates.articleAuthor(authorHTMLData);
 
     /*add generated code to html variable */
 
