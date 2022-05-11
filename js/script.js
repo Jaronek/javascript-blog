@@ -4,7 +4,8 @@ const templates = {
   articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML),
   articleTags: Handlebars.compile(document.querySelector('#template-article-tag').innerHTML),
   articleAuthor: Handlebars.compile(document.querySelector('#template-article-author').innerHTML),
-  tagCloudLink: Handlebars.compile(document.querySelector('#template-tag-cloud-link').innerHTML)
+  tagCloudLink: Handlebars.compile(document.querySelector('#template-tag-cloud-link').innerHTML),
+  authorCloudLink: Handlebars.compile(document.querySelector('#template-author-cloud-link').innerHTML)
 }
 
 const optArticleSelector = '.post',
@@ -320,17 +321,21 @@ function generateAuthors(){
     /*END loop for every article */
   }
 
-  let allAuthorListHTML = '';
+  let allAuthorData = {authors: []};
 
   const authorListHTML = document.querySelector(optAuthorListSelector);
 
   for(let articleAuthor in allAuthors){
 
-    allAuthorListHTML += '<li><a href="#author-' + articleAuthor + '">' + articleAuthor + '</a>' + ' ('  + allAuthors[articleAuthor] + ' )' + '</li>';
 
+    allAuthorData.authors.push({
+      authors: articleAuthor,
+      count: allAuthors[articleAuthor]
+    })
   }
 
-  authorListHTML.innerHTML = allAuthorListHTML;
+  authorListHTML.innerHTML = templates.authorCloudLink(allAuthorData);
+  console.log(allAuthorData);
 
 }
 
